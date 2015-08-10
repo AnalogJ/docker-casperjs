@@ -1,8 +1,5 @@
-
-#  Docker version 1.0.1, build 990021a
-
 FROM ubuntu:14.04
-MAINTAINER Fred Prieur <https://github.com/fprieur/docker-casperjs>
+MAINTAINER Jason Kulatunga <jason@thesparktree.com>
 
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install build-essential chrpath wget curl libssl-dev libxft-dev unzip python git -y
@@ -33,6 +30,10 @@ RUN mv /home/casperjs /usr/local/share/casperjs-latest
 RUN ln -sf /usr/local/share/casperjs-latest/bin/casperjs /usr/local/share/casperjs
 RUN ln -sf /usr/local/share/casperjs-latest/bin/casperjs /usr/local/bin/casperjs
 RUN ln -sf /usr/local/share/casperjs-latest/bin/casperjs /usr/bin/casperjs
+
+# Install NPM Packages
+
+RUN npm install underscore -g
 
 # Default command
 CMD ["/usr/bin/casperjs"]
